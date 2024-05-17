@@ -30,7 +30,13 @@ public static class Validator
             return false;
         }
 
-        if (!decimal.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out var price))
+        if (input.Contains(",") && input.Split(',')[1].Length > 2)
+        {
+            message = "Стоимость не должна иметь больше 2 знаков после запятой.";
+            return false;
+        }
+
+        if (!decimal.TryParse(input, out var price))
         {
             message = "Некорректная стоимость";
             return false;
