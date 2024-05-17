@@ -13,7 +13,8 @@ var state = (States)Enum.Parse(typeof(States), Console.ReadLine());
 
 var total = TotalCalculator.Calculate(count, pricePerUnit);
 
-var totalWithTax = TaxService.AddTax(total, state);
+var totalWithDiscount = DiscountService.CalculateWithDiscount(total);
 
-//Console.WriteLine($"Итого: {total} USD");
-Console.WriteLine($"Итого c налогом: {totalWithTax} USD");
+var totalWithTax = TaxService.AddTax(totalWithDiscount, state);
+
+Console.WriteLine($"Итого: {totalWithTax} USD");
