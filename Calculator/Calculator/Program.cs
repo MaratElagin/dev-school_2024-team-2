@@ -8,8 +8,21 @@ var pricePerUnit = decimal.Parse(Console.ReadLine());
 Console.WriteLine("Количество:");
 var count = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Штат: ");
-var state = (States)Enum.Parse(typeof(States), Console.ReadLine());
+
+States state;
+while (true)
+{
+    Console.WriteLine("Штат: ");
+    var input = Console.ReadLine();
+    if (!Validator.ValidateState(input, out var message))
+    {
+        Console.WriteLine(message);
+        continue;
+    }
+    state = (States)Enum.Parse(typeof(States), input);
+    break;
+}
+
 
 var total = TotalCalculator.Calculate(count, pricePerUnit);
 
