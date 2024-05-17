@@ -90,6 +90,10 @@ cmake-build-*/
 out/
 
 # mpeltonen/sbt-idea plugin
+*idea
+.idea.Calculator/.idea/workspace.xml
+
+# mpeltonen/sbt-idea plugin
 .idea_modules/
 
 # JIRA plugin
