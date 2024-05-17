@@ -2,8 +2,19 @@
 
 using Calculator;
 
-Console.WriteLine("Цена за единицу:");
-var pricePerUnit = decimal.Parse(Console.ReadLine());
+var pricePerUnit = 0m;
+while (true)
+{
+    Console.WriteLine("Цена за единицу:");
+    var inputPrice = Console.ReadLine();
+    if (!Validator.ValidatePrice(inputPrice, out var message))
+    {
+        Console.WriteLine(message);
+        continue;
+    }
+    pricePerUnit = decimal.Parse(inputPrice);
+    break;
+}
 
 Console.WriteLine("Количество:");
 var count = int.Parse(Console.ReadLine());
